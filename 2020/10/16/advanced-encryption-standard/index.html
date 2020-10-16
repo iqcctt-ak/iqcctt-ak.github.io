@@ -6,16 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://github.com/iqcctt-ak">
-  <title>Tag: 测试标签一 | 博客，博客虚😊</title>
+  <title>AES加解密 | 博客，博客虚😊</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta property="og:type" content="website">
-<meta property="og:title" content="博客，博客虚😊">
-<meta property="og:url" content="https://github.com/iqcctt-ak/tags/%E6%B5%8B%E8%AF%95%E6%A0%87%E7%AD%BE%E4%B8%80/index.html">
+  <meta name="description" content="AES在java中的加解密">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AES加解密">
+<meta property="og:url" content="https://github.com/iqcctt-ak/2020/10/16/advanced-encryption-standard/index.html">
 <meta property="og:site_name" content="博客，博客虚😊">
+<meta property="og:description" content="AES在java中的加解密">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-10-16T05:12:00.000Z">
+<meta property="article:modified_time" content="2020-10-16T05:03:02.522Z">
 <meta property="article:author" content="司徒凌霄">
+<meta property="article:tag" content="java">
+<meta property="article:tag" content="后端">
+<meta property="article:tag" content="加密解密">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="博客，博客虚😊" type="application/atom+xml">
@@ -193,80 +200,283 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-advanced-encryption-standard" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2020/10/16/hello-world/" class="archive-article-date">
-        <time datetime="2020-10-16T01:01:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-16</time>
-</a>
-
-        </div>
-    	 
+      <header class="article-header">
   
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2020/10/16/hello-world/" target="_blank">Hello World</a>
   
+    <h1 class="article-title" itemprop="name">
+      AES加解密
     </h1>
   
 
 
-        <div class="article-info info-on-right">
+  
+  
+        
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+<a href="/2020/10/16/advanced-encryption-standard/" class="archive-article-date">
+        <time datetime="2020-10-16T05:12:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-16</time>
+</a>
+
+  
+  
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">862字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">3分</span>
+    </span>
+  </span>
+</div>
+
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    
+    
+
+    
+
+    
+    <h2 id="AES介绍"><a href="#AES介绍" class="headerlink" title="AES介绍"></a>AES介绍</h2><p> 高级加密标准（英语：Advanced Encryption Standard，缩写：AES），在密码学中又称Rijndael加密法，是美国联邦政府采用的一种区块加密标准。这个标准用来替代原先的DES，已经被多方分析且广为全世界所使用。经过五年的甄选流程，高级加密标准由美国国家标准与技术研究院（NIST）于2001年11月26日发布于FIPS PUB 197，并在2002年5月26日成为有效的标准。2006年，高级加密标准已然成为对称密钥加密中最流行的算法之一。</p>
+<a id="more"></a>
+<h2 id="AES加密模式"><a href="#AES加密模式" class="headerlink" title="AES加密模式"></a>AES加密模式</h2><p> 对称/分组密码一般分为流加密(如OFB、CFB等)和块加密(如ECB、CBC等)。对于流加密，需要将分组密码转化为流模式工作。对于块加密(或称分组加密)，如果要加密超过块大小的数据，就需要涉及填充和链加密模式。<br>ECB(Electronic Code Book电子密码本)模式<br>ECB模式是最早采用和最简单的模式，它将加密的数据分成若干组，每组的大小跟加密密钥长度相同，然后每组都用相同的密钥进行加密。</p>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点:"></a>优点:</h3><p> 1.简单；　2.有利于并行计算；　3.误差不会被传送；　缺点:　1.不能隐藏明文的模式；　2.可能对明文进行主动攻击；　因此，此模式适于加密小消息。<br>CBC(Cipher Block Chaining，加密块链)模式</p>
+<h3 id="优点："><a href="#优点：" class="headerlink" title="优点："></a>优点：</h3><p> 1.不容易主动攻击,安全性好于ECB,适合传输长度长的报文,是SSL、IPSec的标准。　缺点：　1.不利于并行计算；　2.误差传递；　3.需要初始化向量IV<br>CFB(Cipher FeedBack Mode，加密反馈)模式</p>
+<h3 id="优点：-1"><a href="#优点：-1" class="headerlink" title="优点："></a>优点：</h3><p> 1.隐藏了明文模式;　2.分组密码转化为流模式;　3.可以及时加密传送小于分组的数据;　缺点:　1.不利于并行计算;　2.误差传送：一个明文单元损坏影响多个单元;　3.唯一的IV;<br>OFB(Output FeedBack，输出反馈)模式</p>
+<h3 id="优点-1"><a href="#优点-1" class="headerlink" title="优点:"></a>优点:</h3><p> 1.隐藏了明文模式;　2.分组密码转化为流模式;　3.可以及时加密传送小于分组的数据;　缺点:　1.不利于并行计算;　2.对明文的主动攻击是可能的;　3.误差传送：一个明文单元损坏影响多个单元</p>
+<h2 id="java工具AES"><a href="#java工具AES" class="headerlink" title="java工具AES"></a>java工具AES</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AESEncrypt</span> </span>&#123;</span><br><span class="line">	<span class="comment">//加解密的key</span></span><br><span class="line">    <span class="keyword">static</span> String cKey = <span class="string">&quot;)O[xfrs]6,YF&#125;+efcaj&#123;+oESb9d8&gt;LiT&quot;</span>;</span><br><span class="line">	<span class="comment">//加解密的偏移量</span></span><br><span class="line">    <span class="keyword">static</span> String cIv = <span class="string">&quot;L+\\~f4Ir)b$=xfrs&quot;</span>;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> sSrc 需要加密的字符串</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> key 加密密钥</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> iv 向量</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> Exception</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">Encrypt</span><span class="params">(String str)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        SecretKeySpec skeySpec = <span class="keyword">new</span> SecretKeySpec(cKey.getBytes(), <span class="string">&quot;AES&quot;</span>);</span><br><span class="line">        Cipher cipher = Cipher.getInstance(<span class="string">&quot;AES/CBC/PKCS5Padding&quot;</span>);<span class="comment">// &quot;算法/模式/补码方式&quot;</span></span><br><span class="line">        IvParameterSpec _iv = <span class="keyword">new</span> IvParameterSpec(cIv.getBytes());<span class="comment">// 使用CBC模式，需要一个向量iv，可增加加密算法的强度</span></span><br><span class="line">        cipher.init(Cipher.ENCRYPT_MODE, skeySpec, _iv);</span><br><span class="line">        <span class="keyword">byte</span>[] encrypted = cipher.doFinal(str.getBytes(<span class="string">&quot;utf-8&quot;</span>));</span><br><span class="line">        String string = Base64.encodeBase64String(encrypted);<span class="comment">//注意：Base64为 import</span></span><br><span class="line">        <span class="keyword">return</span> string;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//解密</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">Decode</span><span class="params">(String str)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        SecretKeySpec skeySpec = <span class="keyword">new</span> SecretKeySpec(cKey.getBytes(), <span class="string">&quot;AES&quot;</span>);</span><br><span class="line">        Cipher cipher = Cipher.getInstance(<span class="string">&quot;AES/CBC/PKCS5Padding&quot;</span>);</span><br><span class="line">        IvParameterSpec _iv = <span class="keyword">new</span> IvParameterSpec(cIv.getBytes());</span><br><span class="line">        cipher.init(Cipher.DECRYPT_MODE, skeySpec, _iv);</span><br><span class="line">        <span class="keyword">byte</span>[] encrypted = Base64.decodeBase64(str);</span><br><span class="line">        <span class="keyword">byte</span>[] original = cipher.doFinal(encrypted);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> String(original, <span class="string">&quot;utf-8&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        String msg = Encrypt(<span class="string">&quot;中华人民共和国&quot;</span>);</span><br><span class="line">		<span class="comment">//加密后的字符</span></span><br><span class="line">        System.out.println(msg);</span><br><span class="line">        String encrypts = Decode(msg);</span><br><span class="line">		<span class="comment">//解密后的字符</span></span><br><span class="line">        System.out.println(encrypts);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    
+    
+    <div class="page-reward">
+      <a href="javascript:void(0);" class="page-reward-btn tooltip-top" target="_self">
+        <div class="tooltip tooltip-east">
+          <span class="tooltip-item">
+            赏
+          </span>
+          <span class="tooltip-content">
+            <span class="tooltip-text">
+              <span class="tooltip-inner">
+                <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i
+                    class="icon icon-quo-right"></i></p>
+                <div class="reward-box">
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/alipay.jpg">
+                    <span class="reward-type">支付宝</span>
+                  </div>
+                  
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/weixin.jpg">
+                    <span class="reward-type">微信</span>
+                  </div>
+                  
+                </div>
+              </span>
+            </span>
+          </span>
+        </div>
+      </a>
+    </div>
+    
+
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          司徒凌霄
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="https://iqcctt-ak.github.io/2020/10/16/advanced-encryption-standard/" title="AES加解密" target="_blank">https://iqcctt-ak.github.io/2020/10/16/advanced-encryption-standard/</a>
+        </li>
+        
+        <li>
+          <strong>版权声明： </strong>
           
+          本博客所有文章除特别声明外，均采用 <a href="https://github.com/JoeyBling/hexo-theme-yilia-plus/blob/master/LICENSE" rel="external nofollow" target="_blank">MIT</a> 许可协议。转载请注明出处！
+        </li>
+        
+      </ul>
+    </div>
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    <div class="article-pop-out tagcloud">
+      <i class="icon-tuding"></i>
+      <a class="article-tag-list-link color3">置顶</a>
+    </div>
+    
+    
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">测试标签一</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">测试标签二</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">后端</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">加密解密</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+    
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/测试分类//" class="article-tag-list-link color5">测试分类</a>
+        			<a href="/categories/java//" class="article-tag-list-link color5">java</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
+    
 
     
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://github.com/iqcctt-ak/2020/10/16/advanced-encryption-standard/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+
+<nav id="article-nav">
+  
+  
+    <a href="/2020/10/16/made-in-china-password/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">国产密码SM2和SM3</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#AES%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.</span> <span class="toc-text">AES介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AES%E5%8A%A0%E5%AF%86%E6%A8%A1%E5%BC%8F"><span class="toc-number">2.</span> <span class="toc-text">AES加密模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E7%82%B9"><span class="toc-number">2.1.</span> <span class="toc-text">优点:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E7%82%B9%EF%BC%9A"><span class="toc-number">2.2.</span> <span class="toc-text">优点：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E7%82%B9%EF%BC%9A-1"><span class="toc-number">2.3.</span> <span class="toc-text">优点：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E7%82%B9-1"><span class="toc-number">2.4.</span> <span class="toc-text">优点:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#java%E5%B7%A5%E5%85%B7AES"><span class="toc-number">3.</span> <span class="toc-text">java工具AES</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
           </div>
@@ -307,9 +517,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,
